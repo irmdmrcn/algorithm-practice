@@ -1,0 +1,42 @@
+/*
+The purpose of this program is to analyze a historical dataset of
+weekly weather temperatures using a for loop. It iterates through the
+dataset to identify days with freezing temperatures (below 0°C),
+calculates the total number of freezing days, and isolates anomalous
+hot days that exceed a specific safety threshold.
+ */
+
+
+public class TemperatureAnalyzer {
+    public static void main(String[] args) {
+        //input dataset (in celcius)
+        double[] weeklyTemperatures = {14.5, -2.0, -5.3, 8.0, 19.5, -1.1, 4.2};
+
+        int freezingDaysCount = 0;
+        double heatAnomalyThreshold = 18.0;
+
+        System.out.println("--- Weather Analysis Started ---");
+
+        //loop part (iterating through the array)
+        for(int i=0;i<weeklyTemperatures.length;i++) {
+            double currentTemp = weeklyTemperatures[i];
+
+            //checking freezing temperatures
+            if (currentTemp<0) {
+                System.out.println("Day " + (i + 1) + ": Freezing warning! (" + currentTemp + "°C)");
+                freezingDaysCount++;
+            }
+
+            //checking heat anomalies
+            if(currentTemp>heatAnomalyThreshold){
+                System.out.println("Day " + (i+1) + ": Heat anomaly detected! (" + currentTemp + "Celcius)");
+            }
+
+        }
+
+        System.out.println("--------------------------------");
+        System.out.println("Total freezing days recorded this week: " + freezingDaysCount);
+        System.out.println("--- Weather Analysis Ended ---");
+
+    }
+}
